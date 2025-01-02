@@ -41,7 +41,7 @@ def is_obj(obj):
     else:
         return True
 
-class ConstansReader():
+class ConstansReaderWriter():
     def __init__(self, module_config_name, **kwargs):
         self.file_config_name = f"configs/{module_config_name}.py"
         obj = __import__(f"configs.{module_config_name}")
