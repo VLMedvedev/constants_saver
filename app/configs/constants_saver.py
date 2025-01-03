@@ -46,7 +46,11 @@ def is_obj(obj):
 class ConstansReaderWriter():
     def __init__(self, module_config_name, **kwargs):
         self.file_config_name = f"configs/{module_config_name}.py"
-        obj = __import__(f"configs.{module_config_name}")
+        import sys
+        mod_name = f"configs.{module_config_name}"
+        obj = __import__(mod_name)
+        del sys.modules[mod_name]
+        obj = __import__(mod_name)
         self.obj  = getattr(obj, module_config_name)
         self.config_dict  = self.get_constants_dict()
 
