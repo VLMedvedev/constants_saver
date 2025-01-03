@@ -52,7 +52,6 @@ class ConstansReaderWriter():
 
     def get_constants_dict(self):
         class_atribute_dict = self.obj.__dict__
-     #   print(class_atribute_dict)
         class_constants_dict = {}
         for var_name, val in class_atribute_dict.items():
             if val is None:
@@ -63,7 +62,6 @@ class ConstansReaderWriter():
             if is_obj(obj=val) :
                 continue
             class_constants_dict[var_name] = val
-     #   print(class_constants_dict)
         return class_constants_dict
 
     # @classmethod
@@ -86,7 +84,6 @@ class ConstansReaderWriter():
                 new_val = json.loads(new_val)
             elif isinstance(val_dict, dict):
                 new_val = new_val.replace("'",'"')
-              #  new_j = json.dumps(new_val)
                 new_val = json.loads(new_val)
             elif isinstance(val_dict, bool):
                 if new_val == "True":
@@ -97,9 +94,7 @@ class ConstansReaderWriter():
                 new_val = float(new_val)
             elif isinstance(val_dict, int):
                 new_val = int(new_val)
-
             self.config_dict[var_name] = new_val
-
         self.save_constants_to_file()
 
 
